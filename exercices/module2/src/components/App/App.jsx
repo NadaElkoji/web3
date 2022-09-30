@@ -2,26 +2,29 @@ import Display from 'components/Display/Display'
 import Button from 'components/Button/Button'
 import { useState } from 'react'
 const App = () => {
-    const [ counter, setCounter ] = useState(0)
+    const [ counter, setCounter ] = useState(JSON.parse(localStorage.getItem("counter")))
   
-    const increaseByOne = () => setCounter(counter + 1)
-    const decreaseByOne = () => setCounter(counter - 1)
-    const setToZero = () => setCounter(0)
-  
+    const changeCount = (delta) => {
+      setCounter(counter + delta)
+      localStorage.setItem("counter", JSON.stringify(counter))
+    }
     return (
       <div>
         <Display counter={counter}/>
         <Button
-          onClick={increaseByOne}
+          changeCount={changeCount}
           text='plus'
+          delta={1}
         />
         <Button
-          onClick={setToZero}
+          changeCount={changeCount}
           text='zero'
+          delta={-counter}
         />     
         <Button
-          onClick={decreaseByOne}
+          changeCount={changeCount}
           text='minus'
+          delta={-1}
         />           
       </div>
     )

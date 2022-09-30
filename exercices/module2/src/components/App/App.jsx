@@ -6,6 +6,7 @@ const App = () => {
   
     const changeCount = (delta) => {
       setCounter(counter + delta)
+      /**  */
       localStorage.setItem("counter", JSON.stringify(counter))
     }
     return (

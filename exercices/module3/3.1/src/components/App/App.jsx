@@ -10,7 +10,7 @@ const App = () => {
   const [loading, setLoading] = useState(true)
 
   setTimeout(() => {
-    setLoading(!loading)
+    setLoading(false)
   }, 3000);
   //const [allButtons,setAll] = useState([])
   if(loading){
